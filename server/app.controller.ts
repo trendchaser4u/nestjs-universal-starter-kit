@@ -6,7 +6,7 @@ export class AppController {
   findAllSpeakers(): any[] {
     return [
       {
-        name: 'Name Dudeman',
+        name: 'Name Dudeman s',
         talk: 'Angular for your face',
         image: 'http://via.placeholder.com/50x50',
       },
