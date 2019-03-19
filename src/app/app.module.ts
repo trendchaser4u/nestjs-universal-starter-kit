@@ -23,7 +23,6 @@ import { InMemoryDataService } from './in-memory-data.service';
   declarations: [
     AppComponent,
     DashboardComponent,
-    HeroesComponent,
     HeroDetailComponent,
     MessagesComponent,
     HeroSearchComponent
