@@ -10,7 +10,7 @@ describe('workspace-project App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('Welcome to hello-ssr-nest!');
+    expect(page.getTitleText()).toEqual('Welcome to nestjs-universal-starter-kit!');
   });
 
   afterEach(async () => {

@@ -16,16 +16,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'hello-ssr-nest'`, () => {
+  it(`should have as title 'nestjs-universal-starter-kit'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('hello-ssr-nest');
+    expect(app.title).toEqual('nestjs-universal-starter-kit');
   });
 
   it('should render title in a h1 tag', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to hello-ssr-nest!');
+    expect(compiled.querySelector('h1').textContent).toContain('Welcome to nestjs-universal-starter-kit!');
   });
 });

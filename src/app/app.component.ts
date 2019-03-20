@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'hello-ssr-nest';
+  title = 'nestjs-universal-starter-kit';
 }

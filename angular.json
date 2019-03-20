@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "hello-ssr-nest": {
+    "nestjs-universal-starter-kit": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -62,18 +62,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "hello-ssr-nest:build"
+            "browserTarget": "nestjs-universal-starter-kit:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "hello-ssr-nest:build:production"
+              "browserTarget": "nestjs-universal-starter-kit:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "hello-ssr-nest:build"
+            "browserTarget": "nestjs-universal-starter-kit:build"
           }
         },
         "test": {
@@ -125,7 +125,7 @@
         }
       }
     },
-    "hello-ssr-nest-e2e": {
+    "nestjs-universal-starter-kit-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -134,11 +134,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "hello-ssr-nest:serve"
+            "devServerTarget": "nestjs-universal-starter-kit:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "hello-ssr-nest:serve:production"
+              "devServerTarget": "nestjs-universal-starter-kit:serve:production"
             }
           }
         },
@@ -154,5 +154,5 @@
       }
     }
   },
-  "defaultProject": "hello-ssr-nest"
+  "defaultProject": "nestjs-universal-starter-kit"
 }
