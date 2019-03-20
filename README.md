@@ -1,27 +1,48 @@
-# HelloSsrNest
+# Nestjs + Angular Universal
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.6.
+A minimal [**Nest**](https://github.com/nestjs/nest) and Angular starter for Universal using the 
+[Angular CLI](https://github.com/angular/angular-cli). If you're looking for the Angular Universal repo go to 
+[angular/universal](https://github.com/angular/universal).
 
-## Development server
+## Getting Started
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+This demo is built following the [Angular-CLI Wiki guide](https://github.com/angular/angular-cli/wiki/stories-universal-rendering)
 
-## Code scaffolding
+We're utilizing packages from the [Angular Universal @nguniversal](https://github.com/angular/universal) repo,
+such as [ng-module-map-ngfactory-loader](https://github.com/angular/universal/modules/module-map-ngfactory-loader)
+to enable Lazy Loading.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+---
 
-## Build
+### Build Time Prerendering Vs. Server Side Rendering(ssr)
+This repo demonstrates the use of 2 different forms of Server Side Rendering.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+**Prerender** 
+* Happens at build time
+* Renders your application and replaces the dist index.html with a version rendered at the route `/`.
 
-## Running unit tests
+**Server-Side Rendering(ssr)**
+* Happens at runtime
+* Uses `ngExpressEngine` to render your application on the fly at the requested url.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+---
 
-## Running end-to-end tests
+### Installation
+* `npm i`
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+### Development (Client-side only rendering)
+* `npm start` which will run `ng serve`.
 
-## Further help
+### Production (also for testing SSR/Pre-rendering locally)
+*`npm run build:ssr && npm run serve:ssr`
+  - Compiles your application and spins up a Nest server to serve
+your Universal application on `http://localhost:4000`.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+*`npm run build:prerender && npm run serve:prerender`
+  - Compiles your application and prerenders your
+applications files, spinning up a demo http-server so you can view it on `http://localhost:8080`
+  - **Note**: To deploy your static site to a static hosting platform you will have to deploy the `dist/browser`
+folder, rather than the usual `dist`
+
+# License
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](/LICENSE)
