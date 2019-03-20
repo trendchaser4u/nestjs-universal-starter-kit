@@ -25,7 +25,7 @@ import { InMemoryDataService } from './in-memory-data.service';
     DashboardComponent,
     HeroDetailComponent,
     MessagesComponent,
-    HeroSearchComponent
+    HeroSearchComponent,
   ],
   imports: [
     AppRoutingModule,

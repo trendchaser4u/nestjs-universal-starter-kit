@@ -10,7 +10,7 @@ module.exports = WebpackConfigFactory.create(webpack, {
   // This is our Nest server for Dynamic universal
   server: './server/main.ts',
   // This is an example of Static prerendering (generative)
-  // prerender: './prerender.ts',
+  prerender: './prerender.ts',
 });
 
 // module.exports = {

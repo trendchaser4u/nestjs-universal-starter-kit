@@ -10,6 +10,7 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'detail/:id', component: HeroDetailComponent },
   { path: 'heroes', loadChildren: './heroes/heroes.module#HeroesModule' },
+  { path: 'about', loadChildren: './about/about.module#AboutModule' },
   { path: '**', redirectTo: '/dashboard' }
 ];
 
