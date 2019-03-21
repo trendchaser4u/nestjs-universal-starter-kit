@@ -2,5 +2,5 @@
   "watch": ["server"],
   "ext": "ts",
   "ignore": ["server/**/*.spec.ts"],
-  "exec": "ts-node -r tsconfig-paths/register server/main.ts"
+  "exec": "ts-node --project tsconfig.nodemon.json -r tsconfig-paths/register server/main.ts"
 }

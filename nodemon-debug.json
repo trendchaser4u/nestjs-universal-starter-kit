@@ -2,5 +2,5 @@
   "watch": ["server"],
   "ext": "ts",
   "ignore": ["server/**/*.spec.ts"],
-  "exec": "node --inspect-brk -r ts-node/register -r tsconfig-paths/register server/main.ts"
+  "exec": "SET TS_NODE_PROJECT=tsconfig.nodemon.json&& node --inspect-brk -r ts-node/register -r tsconfig-paths/register server/main.ts"
 }

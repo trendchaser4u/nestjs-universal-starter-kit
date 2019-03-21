@@ -6,6 +6,8 @@ const webpack = require('webpack');
 const WebpackConfigFactory = require('@nestjs/ng-universal')
   .WebpackConfigFactory;
 
+//console.log(JSON.stringify(WebpackConfigFactory.create(webpack,{})));
+
 module.exports = WebpackConfigFactory.create(webpack, {
   // This is our Nest server for Dynamic universal
   server: './server/main.ts',
