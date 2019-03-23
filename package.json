@@ -1,6 +1,15 @@
 {
   "name": "nestjs-universal-starter-kit",
   "version": "1.0.0",
+  "author": "Boobalan Muthukumran",
+  "description": "",
+  "license": "MIT",
+  "keywords": [],
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/trendchaser4u/nestjs-universal-starter-kit.git"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -18,7 +27,6 @@
     "generate:prerender": "cd dist && node prerender",
     "serve:prerender": "cd dist/browser && http-server -p 8080"
   },
-  "private": true,
   "dependencies": {
     "@angular/animations": "~7.2.10",
     "@angular/common": "~7.2.10",
@@ -41,8 +49,6 @@
     "core-js": "^2.5.4",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^6.3.3",
-    "tsconfig-paths": "^3.8.0",
-    "tslib": "^1.9.0",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {
@@ -65,6 +71,8 @@
     "protractor": "~5.4.0",
     "ts-loader": "^5.2.0",
     "ts-node": "^7.0.1",
+    "tsconfig-paths": "^3.8.0",
+    "tslib": "^1.9.0",
     "tslint": "~5.11.0",
     "typescript": "^3.2.4",
     "webpack-cli": "^3.1.0"
