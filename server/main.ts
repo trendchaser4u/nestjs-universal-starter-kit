@@ -6,10 +6,7 @@ enableProdMode();
 
 async function bootstrap() {
   const app = await NestFactory.create(ApplicationModule);
-  app.enableCors({
-    methods: 'GET',
-    maxAge: 3600
-  });
+  app.enableCors();
   await app.listen(4000);
 }
 bootstrap().catch(err => console.error(err));

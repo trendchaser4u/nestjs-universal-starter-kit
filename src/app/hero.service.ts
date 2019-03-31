@@ -14,46 +14,43 @@ const httpOptions = {
 
 @Injectable()
 export class HeroService {
-
-  private heroesUrl = 'api/heroes';  // URL to web api
+  private heroesUrl = 'http://localhost:4000/api/heroes'; // URL to web api
 
   constructor(
     private http: HttpClient,
     private messageService: MessageService,
-    @Optional() @Inject(APP_BASE_HREF) origin: string) {
-    this.heroesUrl = `${origin}${this.heroesUrl}`;
+    @Optional() @Inject(APP_BASE_HREF) origin: string
+  ) {
+    // this.heroesUrl = `${origin}${this.heroesUrl}`;
   }
 
   /** GET heroes from the server */
   getUsers(): Observable<any> {
-    return this.http.get<any>('https://reqres.in/api/users')
-      .pipe(
-        tap(users => this.log('fetched users')),
-        catchError(this.handleError('getUsers', []))
-      );
+    return this.http.get<any>('https://reqres.in/api/users').pipe(
+      tap(users => this.log('fetched users')),
+      catchError(this.handleError('getUsers', []))
+    );
   }
 
   /** GET heroes from the server */
   getHeroes(): Observable<Hero[]> {
-    return this.http.get<Hero[]>(this.heroesUrl)
-      .pipe(
-        tap(heroes => this.log('fetched heroes')),
-        catchError(this.handleError('getHeroes', []))
-      );
+    return this.http.get<Hero[]>(this.heroesUrl).pipe(
+      tap(heroes => this.log('fetched heroes')),
+      catchError(this.handleError('getHeroes', []))
+    );
   }
 
   /** GET hero by id. Return `undefined` when id not found */
   getHeroNo404<Data>(id: number): Observable<Hero> {
     const url = `${this.heroesUrl}/?id=${id}`;
-    return this.http.get<Hero[]>(url)
-      .pipe(
-        map(heroes => heroes[0]), // returns a {0|1} element array
-        tap(h => {
-          const outcome = h ? `fetched` : `did not find`;
-          this.log(`${outcome} hero id=${id}`);
-        }),
-        catchError(this.handleError<Hero>(`getHero id=${id}`))
-      );
+    return this.http.get<Hero[]>(url).pipe(
+      map(heroes => heroes[0]), // returns a {0|1} element array
+      tap(h => {
+        const outcome = h ? `fetched` : `did not find`;
+        this.log(`${outcome} hero id=${id}`);
+      }),
+      catchError(this.handleError<Hero>(`getHero id=${id}`))
+    );
   }
 
   /** GET hero by id. Will 404 if id not found */
@@ -116,7 +113,6 @@ export class HeroService {
    */
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-
       // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead
 

@@ -15,27 +15,69 @@ import { CreateHeroDto } from './dtos/create-hero.dto';
 @Controller('api')
 export class HeroesController {
   @Get('heroes')
-  getHeroes(@Query() query, @Req() request: Request): string {
-    return 'This action returns all heroes ' + query.name;
+  getHeroes(@Query() query, @Req() request: Request): any[] {
+    const Heroes = [
+      { id: 11, name: 'Mr. Nice' },
+      { id: 12, name: 'Narco' },
+      { id: 13, name: 'Bombasto' },
+      { id: 14, name: 'Celeritas' },
+      { id: 15, name: 'Magneta' },
+      { id: 16, name: 'RubberMan' },
+      { id: 17, name: 'Dynama' },
+      { id: 18, name: 'Dr IQ' },
+      { id: 19, name: 'Magma' },
+      { id: 20, name: 'Tornado' }
+    ];
+
+    if (query && query.name) {
+      return Heroes.filter(
+        (obj): any => {
+          return (
+            Object.values(obj)[1]
+              .toString()
+              .toLowerCase()
+              .indexOf(query.name.toString().toLowerCase()) > -1
+          );
+        }
+      );
+    }
+
+    return Heroes;
   }
 
   @Get('heroes/:id')
-  getHero(@Param() params, @Req() request: Request): string {
-    return 'This action returns hero ' + params.id;
+  getHero(@Param() params, @Req() request: Request): any {
+    const Heroes = [
+      { id: 11, name: 'Mr. Nice' },
+      { id: 12, name: 'Narco' },
+      { id: 13, name: 'Bombasto' },
+      { id: 14, name: 'Celeritas' },
+      { id: 15, name: 'Magneta' },
+      { id: 16, name: 'RubberMan' },
+      { id: 17, name: 'Dynama' },
+      { id: 18, name: 'Dr IQ' },
+      { id: 19, name: 'Magma' },
+      { id: 20, name: 'Tornado' }
+    ];
+    return Heroes.filter(
+      (obj): any => {
+        return Object.values(obj)[0] === parseInt(params.id, 10);
+      }
+    )[0];
   }
 
   @Post('heroes')
   createHero(@Body() createHero: CreateHeroDto): any {
-    return createHero;
+    return { id: Math.floor(Math.random() * 10), name: createHero.name };
   }
 
-  @Put('heroes/:id')
+  @Put('heroes')
   updateHero(@Param('id') id: string, @Body() updateCatDto: any) {
-    return `This action updates a #${id} hero`;
+    return updateCatDto;
   }
 
   @Delete('heroes/:id')
-  remove(@Param('id') id: string) {
-    return `This action removes a #${id} hero`;
+  removeHero(@Param('id') id: string) {
+    return { id };
   }
 }
