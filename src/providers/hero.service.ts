@@ -1,4 +1,4 @@
-import { Injectable, Inject, Optional } from '@angular/core';
+import { Injectable, Inject, Optional, PLATFORM_ID } from '@angular/core';
 import { APP_BASE_HREF } from '@angular/common';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
@@ -7,6 +7,10 @@ import { catchError, map, tap } from 'rxjs/operators';
 
 import { Hero } from '../interfaces/hero';
 import { MessageService } from './message.service';
+
+import { isPlatformServer } from '@angular/common';
+
+import { makeStateKey, TransferState } from '@angular/platform-browser';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -19,8 +23,15 @@ export class HeroService {
   constructor(
     private http: HttpClient,
     private messageService: MessageService,
-    @Optional() @Inject(APP_BASE_HREF) origin: string
+    @Optional() @Inject(APP_BASE_HREF) origin: string,
+    @Inject(PLATFORM_ID) private platformId,
+    private transferState: TransferState
   ) {
+    if (isPlatformServer(platformId)) {
+      console.log('Running in server ' + Date.now());
+    } else {
+      console.log('Running in client ' + Date.now());
+    }
     // this.heroesUrl = `${origin}${this.heroesUrl}`;
   }
 
@@ -34,10 +45,26 @@ export class HeroService {
 
   /** GET heroes from the server */
   getHeroes(): Observable<Hero[]> {
-    return this.http.get<Hero[]>(this.heroesUrl).pipe(
-      tap(heroes => this.log('fetched heroes')),
-      catchError(this.handleError('getHeroes', []))
-    );
+    const HEROES_KEY = makeStateKey<Hero[]>('heroes');
+
+    if (this.transferState.hasKey(HEROES_KEY)) {
+      const heroes = this.transferState.get<Hero[]>(HEROES_KEY, null);
+      this.transferState.remove(HEROES_KEY);
+      return of(heroes).pipe(
+        tap(() => this.log('fetched heroes from transferstate')),
+        catchError(this.handleError('getHeroes', []))
+      );
+    } else {
+      return this.http.get<Hero[]>(this.heroesUrl).pipe(
+        tap(heroes => {
+          this.log('fetched heroes from server');
+          if (isPlatformServer(this.platformId)) {
+            this.transferState.set(HEROES_KEY, heroes);
+          }
+        }),
+        catchError(this.handleError('getHeroes', []))
+      );
+    }
   }
 
   /** GET hero by id. Return `undefined` when id not found */

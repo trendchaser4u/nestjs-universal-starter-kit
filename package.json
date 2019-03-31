@@ -14,7 +14,9 @@
     "ng": "ng",
     "start": "ng serve",
     "start:server": "nodemon",
-    "start:debug": "nodemon --config nodemon-debug.json",
+    "start:server-debug-win": "nodemon --config nodemon-win-debug.json",
+    "start:server-debug-linux": "nodemon --config nodemon-linux-debug.json",
+    "start:ssr-dev": "nodemon --config nodemon-ssr-dev.json",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -23,6 +25,7 @@
     "serve:ssr": "node dist/server",
     "build:ssr": "npm run build:client-and-server-bundles && npm run compile:server",
     "build:client-and-server-bundles": "ng build --prod && ng run nestjs-universal-starter-kit:server:production",
+    "build:client-and-server-bundles-dev": "ng build && ng run nestjs-universal-starter-kit:server:production",
     "build:prerender": "npm run build:client-and-server-bundles && npm run compile:server && npm run generate:prerender",
     "generate:prerender": "cd dist && node prerender",
     "serve:prerender": "cd dist/browser && http-server -p 8080"
