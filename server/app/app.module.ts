@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { join } from 'path';
 import { AngularUniversalModule, applyDomino } from '@nestjs/ng-universal';
 import { AppController } from './app.controller';
-import { HeroesModule } from 'server/heroes/heroes.module';
+import { HeroesModule } from '../heroes/heroes.module';
 
 const BROWSER_DIR = join(process.cwd(), 'dist/browser');
 applyDomino(global, join(BROWSER_DIR, 'index.html'));

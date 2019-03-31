@@ -11,24 +11,23 @@
     "url": "https://github.com/trendchaser4u/nestjs-universal-starter-kit.git"
   },
   "scripts": {
+    "start:client": "ng serve",
+    "watch:server": "webpack --config webpack.dev.server.config.js --progress --colors",
+    "start:server": "node dist/server",
+    "start:ssr": "nodemon --config nodemon-ssr-dev.json",
+    "build:client-and-server-bundles-dev": "ng build && ng run nestjs-universal-starter-kit:server:production",
+    "build:client-and-server-bundles": "ng build --prod && ng run nestjs-universal-starter-kit:server:production",
+    "compile:server": "webpack --config webpack.prod.server.config.js --progress --colors",
+    "build:ssr": "npm run build:client-and-server-bundles && npm run compile:server",
+    "serve:ssr": "node dist/server",
+    "build:prerender": "npm run build:client-and-server-bundles && npm run compile:server && npm run generate:prerender",
+    "generate:prerender": "cd dist && node prerender",
+    "serve:prerender": "cd dist/browser && http-server -p 8080",
     "ng": "ng",
-    "start": "ng serve",
-    "start:server": "nodemon",
-    "start:server-debug-win": "nodemon --config nodemon-win-debug.json",
-    "start:server-debug-linux": "nodemon --config nodemon-linux-debug.json",
-    "start:ssr-dev": "nodemon --config nodemon-ssr-dev.json",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "compile:server": "webpack --config webpack.server.config.js --progress --colors",
-    "serve:ssr": "node dist/server",
-    "build:ssr": "npm run build:client-and-server-bundles && npm run compile:server",
-    "build:client-and-server-bundles": "ng build --prod && ng run nestjs-universal-starter-kit:server:production",
-    "build:client-and-server-bundles-dev": "ng build && ng run nestjs-universal-starter-kit:server:production",
-    "build:prerender": "npm run build:client-and-server-bundles && npm run compile:server && npm run generate:prerender",
-    "generate:prerender": "cd dist && node prerender",
-    "serve:prerender": "cd dist/browser && http-server -p 8080"
+    "e2e": "ng e2e"
   },
   "dependencies": {
     "@angular/animations": "~7.2.11",
@@ -78,6 +77,7 @@
     "tslib": "^1.9.0",
     "tslint": "~5.11.0",
     "typescript": "^3.2.4",
-    "webpack-cli": "^3.1.0"
+    "webpack-cli": "^3.1.0",
+    "webpack-node-externals": "^1.7.2"
   }
 }

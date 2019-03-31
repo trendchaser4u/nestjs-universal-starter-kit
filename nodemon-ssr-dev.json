@@ -2,5 +2,5 @@
   "watch": ["src"],
   "ext": "ts,js,scss,html",
   "ignore": ["src/**/*.spec.ts"],
-  "exec": "npm run build:client-and-server-bundles-dev && npm run start:server"
+  "exec": "npm run build:client-and-server-bundles-dev"
 }

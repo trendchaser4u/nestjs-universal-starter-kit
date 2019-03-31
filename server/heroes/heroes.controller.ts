@@ -18,7 +18,7 @@ export class HeroesController {
   getHeroes(@Query() query, @Req() request: Request): any[] {
     const Heroes = [
       { id: 11, name: 'Mr. Nice' },
-      { id: 12, name: 'Narco' },
+      { id: 12, name: 'Narcos' },
       { id: 13, name: 'Bombasto' },
       { id: 14, name: 'Celeritas' },
       { id: 15, name: 'Magneta' },
