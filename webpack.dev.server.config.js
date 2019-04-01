@@ -14,15 +14,15 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /.tsx?$/,
-        use: 'ts-loader',
-        exclude: /node_modules/
+        test: /\.(ts|js)x?$/,
+        exclude: /node_modules/,
+        use: ['ts-loader']
       }
     ]
   },
-  mode: 'development',
+  mode: 'none',
   resolve: {
-    extensions: ['.tsx', '.ts', '.js']
+    extensions: ['.tsx', '.ts', '.js', '.json']
   },
   plugins: [new webpack.HotModuleReplacementPlugin()],
   output: {
