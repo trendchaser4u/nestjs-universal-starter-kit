@@ -17,6 +17,8 @@ import { AppShellRenderDirective } from '../directives/app-shell.directives';
 import { AppShellNoRenderDirective } from '../directives/app-shell.directives';
 
 import { BrowserTransferStateModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatButtonModule, MatCheckboxModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,10 @@ import { BrowserTransferStateModule } from '@angular/platform-browser';
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     FormsModule,
     HttpClientModule,
-    BrowserTransferStateModule
+    BrowserTransferStateModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatCheckboxModule
   ],
   providers: [HeroService, MessageService],
   bootstrap: [AppComponent]
