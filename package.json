@@ -19,7 +19,7 @@
     "start:ssr": "nodemon --config nodemon-ssr-dev.json",
     "build:client-and-server-bundles-dev": "ng build && ng run nestjs-universal-starter-kit:server:production",
     "build:client-and-server-bundles": "ng build --prod && ng run nestjs-universal-starter-kit:server:production",
-    "compile:server": "webpack --config webpack.prod.server.config.js --progress --colors",
+    "compile:server": "webpack --config webpack.prod.server.config.js --progress --colors --display-error-details",
     "build:ssr": "npm run build:client-and-server-bundles && npm run compile:server",
     "serve:ssr": "node dist/server",
     "build:prerender": "npm run build:client-and-server-bundles && npm run compile:server && npm run generate:prerender",
