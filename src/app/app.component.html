@@ -3,5 +3,11 @@
   <a routerLink="/dashboard">Dashboard</a>
   <a routerLink="/heroes">Heroes</a>
 </nav>
+<h3>Current Count: {{ count$ | async }}</h3>
+<div class="example-button-row">
+  <button mat-button color="primary" (click)="increment()">Increment</button>
+  <button mat-button color="accent" (click)="decrement()">Decrement</button>
+  <button mat-button color="warn" (click)="reset()">Reset Counter</button>
+</div>
 <router-outlet></router-outlet>
 <app-messages *appShellNoRender></app-messages>

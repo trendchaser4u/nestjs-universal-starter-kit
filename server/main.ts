@@ -4,8 +4,9 @@ import { ApplicationModule } from './app/app.module';
 
 declare const module: any;
 
-enableProdMode();
-
+if (!module.hot) {
+  enableProdMode();
+}
 async function bootstrap() {
   const app = await NestFactory.create(ApplicationModule);
   app.enableCors();
