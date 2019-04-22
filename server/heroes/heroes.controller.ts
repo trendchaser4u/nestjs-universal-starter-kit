@@ -12,10 +12,14 @@ import {
 import { Request } from 'express';
 import { CreateHeroDto } from './dtos/create-hero.dto';
 
+import { HeroesService } from './heroes.service';
 @Controller('api')
 export class HeroesController {
+  constructor(private readonly heroService: HeroesService) {}
+
   @Get('heroes')
   getHeroes(@Query() query, @Req() request: Request): any[] {
+    // console.log(this.heroService.isProduction())
     const Heroes = [
       { id: 11, name: 'Mr. Nice' },
       { id: 12, name: 'Narcos' },

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Optional, Inject } from '@angular/core';
 import { Hero } from '../../interfaces/hero';
 import { HeroService } from '../../providers/hero.service';
+import { REQUEST, RESPONSE } from '@nguniversal/express-engine/tokens';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,7 +11,12 @@ import { HeroService } from '../../providers/hero.service';
 export class DashboardComponent implements OnInit {
   heroes: Hero[] = [];
   users: any = [];
-  constructor(private heroService: HeroService) {}
+  constructor(
+    private heroService: HeroService,
+    @Optional() @Inject(REQUEST) private req: any
+  ) {
+    console.log(req);
+  }
 
   ngOnInit() {
     this.getHeroes();

@@ -28,9 +28,9 @@ export class HeroService {
     private transferState: TransferState
   ) {
     if (isPlatformServer(platformId)) {
-      console.log('Running in server ' + Date.now());
+      console.log('Running in server ' + Date.now().toLocaleString());
     } else {
-      console.log('Running in client ' + Date.now());
+      console.log('Running in client ' + Date.now().toLocaleString());
     }
     // this.heroesUrl = `${origin}${this.heroesUrl}`;
   }

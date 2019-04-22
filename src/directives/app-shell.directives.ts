@@ -17,8 +17,8 @@ export class AppShellRenderDirective implements OnInit {
     private templateRef: TemplateRef<any>,
     @Inject(PLATFORM_ID) private platformId
   ) {
-    console.log(platformId);
-    console.log(isPlatformServer(platformId));
+    console.log('platformId', platformId);
+    console.log('isPlatformServer', isPlatformServer(platformId));
   }
 
   ngOnInit() {
@@ -39,8 +39,8 @@ export class AppShellNoRenderDirective implements OnInit {
     private templateRef: TemplateRef<any>,
     @Inject(PLATFORM_ID) private platformId
   ) {
-    console.log(platformId);
-    console.log(isPlatformServer(platformId));
+    console.log('platformId', platformId);
+    console.log('isPlatformServer', isPlatformServer(platformId));
   }
 
   ngOnInit() {
