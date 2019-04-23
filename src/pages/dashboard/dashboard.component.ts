@@ -1,7 +1,7 @@
 import { Component, OnInit, Optional, Inject } from '@angular/core';
 import { Hero } from '../../interfaces/hero';
 import { HeroService } from '../../providers/hero.service';
-import { REQUEST, RESPONSE } from '@nguniversal/express-engine/tokens';
+import { CookieService } from 'ngx-cookie';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,9 +13,14 @@ export class DashboardComponent implements OnInit {
   users: any = [];
   constructor(
     private heroService: HeroService,
-    @Optional() @Inject(REQUEST) private req: any
+    @Optional() @Inject('REQUEST') private newReq: any,
+    private cookieService: CookieService
   ) {
-    console.log(req);
+    this.cookieService.put('universe', 'am the danger');
+    console.log('All cookies:', this.cookieService.getAll());
+    if (newReq) {
+      console.log('New Request:', newReq.headers);
+    }
   }
 
   ngOnInit() {

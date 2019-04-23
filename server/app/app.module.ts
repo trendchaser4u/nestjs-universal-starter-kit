@@ -5,7 +5,7 @@ import { AppController } from './app.controller';
 import { HeroesModule } from '../heroes/heroes.module';
 import { ConfigModule } from 'nestjs-config';
 import { resolve } from 'path';
-
+import { REQUEST, RESPONSE } from '@nguniversal/express-engine/tokens';
 const BROWSER_DIR = join(process.cwd(), 'dist/browser');
 applyDomino(global, join(BROWSER_DIR, 'index.html'));
 
@@ -17,7 +17,17 @@ applyDomino(global, join(BROWSER_DIR, 'index.html'));
     HeroesModule,
     AngularUniversalModule.forRoot({
       viewsPath: BROWSER_DIR,
-      bundle: require('../../dist/server/main.js')
+      bundle: require('../../dist/server/main.js'),
+      extraProviders: [
+        {
+          provide: 'REQUEST',
+          useExisting: REQUEST
+        },
+        {
+          provide: 'RESPONSE',
+          useExisting: RESPONSE
+        }
+      ]
     })
   ],
   controllers: [AppController]
